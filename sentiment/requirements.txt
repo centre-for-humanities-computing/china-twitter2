@@ -2,3 +2,6 @@ pandas
 transformers
 spacy
 tensorflow
+matplotlib
+scipy
+ruptures
