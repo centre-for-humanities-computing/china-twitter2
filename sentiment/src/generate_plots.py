@@ -200,7 +200,7 @@ if __name__ == '__main__':
         rt = ['', '_no_rt'][i]
         
         # average emotions over each day
-        dat = dat.groupby('date_created').mean().reset_index()
+        dat = dat.groupby('date_created').mean(numeric_only=True).reset_index()
 
         plot_all_grid(dat, save_path = fig_path / f'all_emotions{rt}_normalised.png', normalize=True)
         plot_all_grid(dat, save_path =fig_path / f'all_emotions{rt}.png', normalize=False)
@@ -211,8 +211,8 @@ if __name__ == '__main__':
         # may to nov
         dat_may = dat.loc[(dat['date_created'] < '2021-11-01') & (dat['date_created'] > '2021-04-30')]
 
-        plot_all_grid(dat_may, save_path = os.path.join('fig', 'may_to_november', f'all_emotions{rt}_normalised.png'), normalize=True)
-        plot_all_grid(dat_may, save_path = os.path.join('fig','may_to_november', f'all_emotions{rt}.png'), normalize=False)
+        plot_all_grid(dat_may, save_path = fig_path / 'may' / f'all_emotions{rt}_normalised.png', normalize=True)
+        plot_all_grid(dat_may, save_path = fig_path / 'may' / f'all_emotions{rt}.png', normalize=False)
 
         #plot_emotions(dat_may, f'fig/may_to_november/emotions{rt}_normalised.png', normalize=True)
         #plot_emotions(dat_may, f'fig/may_to_november/all_emotions{rt}_normalised.png', normalize=False)
@@ -245,14 +245,14 @@ if __name__ == '__main__':
         # may to november
         flux_may = flux.loc[(flux['date'] < '2021-11-01') & (flux['date'] > '2021-04-30')]
         flux_may = flux_may.reset_index(drop = True)
-        plot_change_points(flux_may, penalty = penalty, title="Variance shift points in the emotion signal", save_path=f'fig/may_to_november/variance_shifts{rt}.png')
-        plot_fluxus(flux_may, filename = fig_path / f'may/fluxus{rt}.png')
+        plot_change_points(flux_may, penalty = penalty, title="Variance shift points in the emotion signal", save_path= fig_path / 'may' / f'variance_shifts{rt}.png')
+        plot_fluxus(flux_may, filename = fig_path / 'may' / f'fluxus{rt}.png')
 
         # november and forth
         flux_nov = flux.loc[(flux['date'] > '2021-11-01')]
         flux_nov = flux_nov.reset_index(drop = True)
-        plot_change_points(flux_nov, penalty = penalty, title="Variance shift points in the emotion signal", save_path=f'fig/november_and_forth/variance_shifts{rt}.png')
-        plot_fluxus(flux_nov, filename = fig_path /f'november/fluxus{rt}.png')
+        plot_change_points(flux_nov, penalty = penalty, title="Variance shift points in the emotion signal", save_path= fig_path / "nov" / f"variance_shifts{rt}.png")
+        plot_fluxus(flux_nov, filename = fig_path / "nov" / f"fluxus{rt}.png")
 
 
 
