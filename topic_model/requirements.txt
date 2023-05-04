@@ -1,0 +1,10 @@
+pandas
+altair
+matplotlib
+seaborn
+pyLDAvis==3.4.1
+gensim
+nltk
+spacy
+openpyxl
+numpy
