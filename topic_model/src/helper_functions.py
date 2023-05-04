@@ -3,15 +3,10 @@ import pickle as pkl
 import altair as alt
 import numpy as np 
 
-# setting up matplotlib settings
-# Source: https://towardsdatascience.com/making-matplotlib-beautiful-by-default-d0d41e3534fd
 import matplotlib.pyplot as plt
-import seaborn as sns 
 import matplotlib.font_manager as font_manager
-import pickle as pkl
 import pyLDAvis.gensim as gm
 
-#%matplotlib inline
 from pandas.plotting import scatter_matrix
 import seaborn as sns
 sns.set(style="whitegrid")
@@ -19,36 +14,9 @@ import re
 import pyLDAvis
 from tqdm import tqdm
 
-#### Imports
-import pandas as pd 
-import pickle as pkl 
-import altair as alt
-import numpy as np 
-
-# setting up matplotlib settings
-# Source: https://towardsdatascience.com/making-matplotlib-beautiful-by-default-d0d41e3534fd
-import matplotlib.pyplot as plt
-import seaborn as sns 
-import matplotlib.font_manager as font_manager
-
-#%matplotlib inline
-from pandas.plotting import scatter_matrix
-import seaborn as sns
-sns.set(style="whitegrid")
-import re
-import pyLDAvis
-
 import matplotlib.dates as mdates
-import matplotlib.pyplot as plt
 
-
-# font
-font_dirs = ['/Library/Fonts', ]
-font_files = font_manager.findSystemFonts(fontpaths=font_dirs)
-font_list = font_manager.createFontList(font_files)
-font_manager.fontManager.ttflist.extend(font_list)
-
-plt.rcParams['font.family'] = 'DIN Condensed Bold'
+plt.rcParams['font.family'] = 'serif'
 
 # set matplotlib aesthetics
 CB91_Blue = '#2CBDFE'
@@ -369,13 +337,11 @@ def load_models(mediapath, diplomatpath):
 
 def visualize_model(dictionary, sort_topics = False):
     #Creating Topic Distance Visualization 
-    pyLDAvis.enable_notebook()
     p = gm.prepare(dictionary["model"], dictionary["corpus"], dictionary["id2word"], sort_topics = sort_topics)
     return p
 
 def topics_over_time(lda, data):
     # code adapted from https://jeriwieringa.com/2017/06/21/Calculating-and-Visualizing-Topic-Significance-over-Time-Part-1/
-    pyLDAvis.enable_notebook()
     
     distribution = []
     for i in range(len(lda['corpus'])):
