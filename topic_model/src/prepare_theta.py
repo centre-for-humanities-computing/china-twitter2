@@ -1,17 +1,9 @@
 ''' VMP 2022-03-05: 
 based on Analysis_RASMUS.ipynb
 '''
-
-#### Imports
 import pandas as pd 
 import pickle as pkl 
-import altair as alt
 import numpy as np 
-import os 
-import re
-import pyLDAvis
-import gensim
-import openpyxl
 from pathlib import Path
 
 
@@ -51,9 +43,13 @@ def load_models(filepath_media, filepath_diplomat):
 def main():
     path = Path(__file__)
 
-    mdl_path = path.parents[1] / 'theta'
-    theta_path = path.parents[1] / 'fig'
+    mdl_path = path.parents[1] / 'mdl'
+    theta_path = path.parents[1] / 'theta'
     data_path = path.parents[2] / 'data'
+
+    # ensure that theta path exists
+    if not theta_path.exists():
+        theta_path.mkdir(parents=True)
 
     # load model
     for period in ["early", "late", "all"]:
@@ -98,7 +94,9 @@ def main():
         fname = str(theta_path / f'diplomats_noretweet_theta_df_{period}.csv')
         dfout.to_csv(fname, index=False)
         print(f'{"*"*25}\n[INFO] data exported to {fname}')
-        fname_maxqda = '..' + fname.split('.')[2] + '.xlsx' # VMP2022-03-05: (previously: fname.split('.')[0] + '.xlsx')
-        dfout['created_at'] = dfout['created_at'].astype(str)
+        fname_maxqda =  str(theta_path / f'diplomats_noretweet_theta_df_{period}.xlsx')
         dfout.to_excel(fname_maxqda, index=False)
         print(f'[INFO] data exported to {fname_maxqda}')
+
+if __name__ == "__main__":
+    main()
