@@ -16,7 +16,7 @@ def plot_subset(df, range, legend_size, figname, figsize = (7.5, 4), dpi = 100):
     ax.set_ylim(bottom = 0, top = 0.4)
     ax.legend(frameon = True, loc = 'upper right', fontsize = legend_size)
     
-    fig.savefig(f'plots/{figname}.png', bbox_inches = 'tight')
+    fig.savefig(figname, bbox_inches = 'tight')
 
 def main():
     path = Path(__file__)
@@ -46,7 +46,18 @@ def main():
         data, diplomats, media = prep_data(data_path / f"{period}_data_topic_model.csv")
         top_over_time = topics_over_time(diplo_dict, diplomats)
 
-        #
+        # depending on the number of topics, plot different subsets
+        # plot 8 topics at a time
+        n_topics = diplo_dict.num_topics
+        n_plots = n_topics // 8
+
+        # plot 8 topics at a time
+        for i in range(n_plots):
+            plot_subset(top_over_time, range(8*i, 8*(i+1)), 10, str(fig_path / f"topics_over_time_{period}_{i}.png"))
+
+        # plot the remaining topics
+        if n_topics % 8 != 0:
+            plot_subset(top_over_time, range(8*n_plots, n_topics), 10, str(fig_path / f"topics_over_time_{period}_{n_plots}.png"))
 
 if __name__ == '__main__':
     main()
