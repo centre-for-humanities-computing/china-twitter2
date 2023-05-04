@@ -14,7 +14,8 @@ import re
 import pyLDAvis
 from tqdm import tqdm
 
-import matplotlib.dates as mdates
+import matplotlib.dates as md
+
 
 plt.rcParams['font.family'] = 'serif'
 
