@@ -165,7 +165,7 @@ cython_debug/
 */mdl*
 
 # any xlsx files
-*.xlsx
+*xlsx*
 
 # any csv file 
 *.csv
