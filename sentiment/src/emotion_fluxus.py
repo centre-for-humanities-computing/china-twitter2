@@ -103,12 +103,12 @@ def main_extract(filename: str, out_path: str, window: int):
 
 
 def main(filenames: List[str], window: int):
-    if not os.path.exists("data/idmdl"):
-        os.makedirs("data/idmdl")
+    if not os.path.exists("../data/idmdl"):
+        os.makedirs("../data/idmdl")
 
     for file in filenames:
-        filename = os.path.join('data', 'emotions_summarised', f'{file}.ndjson')
-        out_path = os.path.join('data', 'idmdl', f"{file}_W{window}.csv")
+        filename = os.path.join('..', 'data', 'emotions_summarised', f'{file}.ndjson')
+        out_path = os.path.join('..','data', 'idmdl', f"{file}_W{window}.csv")
         main_extract(filename, out_path, window)
 
         #out_folder = 'data/idmdl'
