@@ -10,7 +10,4 @@ A total of 180 models were trained for both diplomat and media tweets in each ti
 * Dirichlet hyperparameter beta: A-priori word-topic density
     * The topic model was trained using 5 different a-priori beliefs about the word-topic density, including 0.01, 0.31, 0.61, 0.91 and symmetric ![equation](https://latex.codecogs.com/svg.image?%5Cleft(%5Cfrac%7B1%7D%7Bn_%7Btopics%7D%7D%5Cright))
 
-The model with the best ![equation](https://latex.codecogs.com/svg.image?c_v) coherence score is chosen for analysis. 
-
-
-When the models have been generated, run the code in the topic_model.ipynb to visualize the results. Furthermore, visualisations of how prevalent each topic was over time (averaged topic weight) can be found in the `topics_over_time.ipynb`. 
+The model with the best ![equation](https://latex.codecogs.com/svg.image?c_v) coherence score is chosen for analysis.
