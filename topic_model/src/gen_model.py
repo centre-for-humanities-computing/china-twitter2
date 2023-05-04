@@ -1,10 +1,3 @@
-'''
-usage: 
-python modelling/gen_model.py -i data/early_data.csv -o data/models/ldagridsearch_earlydata.pkl
-python modelling/gen_model.py -i data/late_data.csv -o data/models/ldagridsearch_latedata.pkl
-python modelling/gen_model.py -i data/all_data.csv -o data/models/ldagridsearch_alldata.pkl
-'''
-
 import gensim
 import pandas as pd 
 import pickle as pkl

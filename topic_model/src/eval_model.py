@@ -1,9 +1,3 @@
-'''
-usage: 
-python modelling/eval_model.py -d data/early_data.csv -o data/models/earlydata -g data/models/ldagridsearch_earlydata.pkl
-python modelling/eval_model.py -d data/late_data.csv -o data/models/latedata -g data/models/ldagridsearch_latedata.pkl
-python modelling/eval_model.py -d data/all_data.csv -o data/models/alldata -g data/models/ldagridsearch_alldata.pkl
-'''
 import pickle as pkl
 from gen_model import LDA_model #load previous function for LDA
 import pandas as pd
