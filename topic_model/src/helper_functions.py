@@ -432,17 +432,16 @@ def topics_over_time(lda, data):
     
     return df_avg
 
-
+def plot_subset(df, range, legend_size, figname, figsize = (7.5, 4), dpi = 100): 
+    fig, ax = plt.subplots(figsize = figsize, dpi = dpi)
+    for topic in range: 
+        df_tmp = df[df["topic_id"] == topic].sort_values(by = 'time')
+        ax.plot(df_tmp['time'], df_tmp['average_weight'], label = f"Topic {topic}")
+    ax.xaxis.set_major_locator(md.MonthLocator(interval = 2))
+    ax.xaxis.set_major_formatter(md.DateFormatter('%b %y'))
+    ax.set_ylim(bottom = 0, top = 0.4)
+    ax.legend(frameon = True, loc = 'upper right', fontsize = legend_size)
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    fig.savefig(figname, bbox_inches = 'tight')
     
     
