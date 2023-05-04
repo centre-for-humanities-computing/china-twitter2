@@ -1,12 +1,8 @@
-import seaborn as sns
-sns.set(style="whitegrid")
 import sys
 from pathlib import Path
 sys.path.append(str(Path.cwd().parent / "src" ))
 from helper_functions import load_models, visualize_model, topics_over_time, prep_data, plot_subset
-from pyLDAvis import prepared_data_to_html, save_html
-
-
+from pyLDAvis import save_html
 
 
 def main():
