@@ -7,7 +7,7 @@ import matplotlib as mtpl
 import matplotlib.dates as mdates
 import os
 from pathlib import Path
-
+from math import log
 
 mtpl.rcParams['font.family'] = 'serif'
 mtpl.rcParams['figure.titlesize'] = 20
@@ -221,3 +221,53 @@ if __name__ == '__main__':
 
     # only English
     plot_all(data_list, title_list, lang = 'en', save_path=fig_path / "orig_diplomat_tweets_rt_ntweets_time_en.png")
+
+
+    ### INVESTIGATING RETWEETS DIVIDED BY WITH MEDIA AND WITHOUT MEDIA (photos and videos)
+    df = df[df['category'] != 'Media']
+    df = df[df['retweet'] != 'retweeted']
+    df['created_at'] = pd.to_datetime(df['created_at'], format = '%Y-%m-%d')
+    df = df.sort_values(by='created_at')
+    df_media = df.query('photo != 0 | video != 0')
+    df_no_media = df.query('photo == 0 & video == 0')
+    count_media = df_media.groupby("created_at")["tweetID"].count()
+    count_no_media = df_no_media.groupby("created_at")["tweetID"].count()
+
+
+    fig, ax = plt.subplots(1, 1, figsize=(20, 9))
+    ax.plot(count_media, alpha = 0.3, color = "#E69F00")
+    ax.plot(count_no_media, alpha = 0.3, color = "#56B4E9")
+
+    gaussian_media = count_media.rolling(window=20, win_type='gaussian', center=True, min_periods=1).mean(std = 3)
+    gaussian_no_media = count_no_media.rolling(window=20, win_type='gaussian', center=True, min_periods=1).mean(std = 3)
+
+    ax.plot(gaussian_media, alpha = 1, label = "Tweets with photos or videos",  color = "#E69F00")
+    ax.plot(gaussian_no_media, alpha = 1, label = "Tweets without photos or videos", color = "#56B4E9")
+    
+    ax.xaxis.set_major_formatter(date_form)
+
+    ax.set_ylabel('Number of tweets')
+
+    ax.legend()
+    plt.savefig(fig_path / "number_of_tweets.png")
+
+
+    fig, ax = plt.subplots(2, 1, figsize=(30, 9), sharey=True)
+
+    # plot the original tweets with images or videos
+    for i, row in df_media.iterrows():
+        if row['retweet_count'] != 0:
+            ax[0].fill_between([row['created_at'], row['created_at'] + pd.Timedelta(days=1)], [0, 0], [log(row['retweet_count']), log(row['retweet_count'])], color='blue', alpha=0.01)
+    ax[0].set_title('Original tweets with images or videos')
+    ax[0].set_ylabel('Number of retweets (log)')
+    ax[0].xaxis.set_major_formatter(date_form)
+
+
+    # plot the original tweets without images or videos
+    for i, row in df_no_media.iterrows():
+        if row['retweet_count'] != 0:
+            ax[1].fill_between([row['created_at'], row['created_at'] + pd.Timedelta(days=1)], [0, 0], [log(row['retweet_count']), log(row['retweet_count'])], color='blue', alpha=0.01)
+    ax[1].set_title('Original tweets without images or videos')
+    ax[1].set_ylabel('Number of retweets (log)')
+    ax[1].xaxis.set_major_formatter(date_form)
+    plt.savefig(fig_path / 'retweets.png', bbox_inches='tight')
