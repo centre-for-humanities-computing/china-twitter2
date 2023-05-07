@@ -1,6 +1,31 @@
 # china-twitter2
 
-## Dataset
+## Tables
+### Table 1: Dataset
+| Data collection                                                               |                            |
+| ----------------------------------------------------------------------------- | -------------------------- |
+| Date range                                                                    | Nov 1, 2019 - XXXXXXXXXXXX |
+| Days collected                                                                | XXX                        |
+|                                                                               |                            |
+| Handles collected                                                             | XX                         |
+| Diplomacy                                                                     | XX                         |
+| Media                                                                         | XX                         |
+|                                                                               |                            |
+| Datasets                                                                      | Number of cases            |
+| 1\. Total original tweets and retweets collected (network analysis)           | XXXXXXX                    |
+| 1a. Diplomacy original tweets                                                 | XXXXXX                     |
+| 1b. Diplomacy retweets                                                        | XXXXXX                     |
+| 1c. Media original tweets                                                     | XXXXXXXX                   |
+| 1d. Media retweets                                                            | XXXXXX                     |
+| 2\. Subsample of original tweets in English (topic analysis)                  | XXXXXXX                    |
+| 2a. Diplomacy                                                                 | XXXXXX                     |
+| 2.b Media                                                                     | XXXXXXX                    |
+| 3\. Coded sample of diplomacy original tweets in English (discourse analysis) | XXXXX                      |
+
+
+
+## Figures
+
 
 ### Diplomacy
 
