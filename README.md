@@ -26,8 +26,16 @@
 
 
 ## Figures
-#### Figure X (full data) open [here](http://htmlpreview.github.io/?https://github.com/centre-for-humanities-computing/china-twitter2/blob/main/topic_model/fig/topic_model_diplomat_alldates.html)
+### Figure X (full data) open [here](http://htmlpreview.github.io/?https://github.com/centre-for-humanities-computing/china-twitter2/blob/main/topic_model/fig/topic_model_diplomat_alldates.html)
 
+### Figure Xa
+![alt text](topic_model/fig/topics_over_time_all_0.png)
+
+### Figure Xb
+![alt text](topic_model/fig/topics_over_time_all_1.png)
+
+### Figure Xc
+![alt text](topic_model/fig/topics_over_time_all_2.png)
 
 ### Diplomacy
 
