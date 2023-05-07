@@ -24,6 +24,8 @@
 | 2.b Media                                                                     | XXXXXXX                    |
 | 3\. Coded sample of diplomacy original tweets in English (discourse analysis) | XXXXX                      |
 
+### Table 2: Diplomacy
+### Table 3: Media
 
 ## Figures
 ### Figure X (full data) open [here](http://htmlpreview.github.io/?https://github.com/centre-for-humanities-computing/china-twitter2/blob/main/topic_model/fig/topic_model_diplomat_alldates.html)
@@ -37,9 +39,13 @@
 ### Figure Xc
 ![alt text](topic_model/fig/topics_over_time_all_2.png)
 
-### Diplomacy
+### Figure X
+![alt text](sentiment/fig/all_emotions_no_rt_normalised.png)
 
-### Media
+### Figure X
+![alt text](sentiment/fig/variance_shifts_no_rt.png)
+
+
 
 ## Topic analysis
 A topic model was created for each of the three time periods. Latent Dirichlet Allocation topic modelling using `gensim` package in Python (See documentation: https://radimrehurek.com/gensim_3.8.3/models/ldamodel.html). 
