@@ -1,5 +1,7 @@
 # china-twitter2
 
+**Note:** Explain early, late and full
+
 ## Tables
 ### Table 1: Dataset
 | Data collection                                                               |                            |
@@ -23,8 +25,8 @@
 | 3\. Coded sample of diplomacy original tweets in English (discourse analysis) | XXXXX                      |
 
 
-
 ## Figures
+#### Figure X (full data) open [here](http://htmlpreview.github.io/?https://github.com/centre-for-humanities-computing/china-twitter2/blob/main/topic_model/fig/topic_model_diplomat_alldates.html)
 
 
 ### Diplomacy
