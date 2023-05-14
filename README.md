@@ -45,13 +45,11 @@
 ### Figure X
 ![alt text](sentiment/fig/variance_shifts_no_rt.png)
 
-
 ### Figure X
 ![alt text](media_use/fig/retweets.png)
 
 ### Figure X
 ![alt text](media_use/fig/number_of_tweets.png)
-
 
 ## Topic analysis
 A topic model was created for each of the three time periods. Latent Dirichlet Allocation topic modelling using `gensim` package in Python (See documentation: https://radimrehurek.com/gensim_3.8.3/models/ldamodel.html). 
