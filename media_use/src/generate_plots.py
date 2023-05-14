@@ -232,13 +232,13 @@ if __name__ == '__main__':
 
     fig, ax = plt.subplots(1, 1, figsize=(20, 9))
     ax.plot(count_media, alpha = 0.3, color = palette[0])
-    ax.plot(count_no_media, alpha = 0.3, color = palette[1])
+    ax.plot(count_no_media, alpha = 0.3, color = palette[4])
 
     gaussian_media = count_media.rolling(window=20, win_type='gaussian', center=True, min_periods=1).mean(std = 3)
     gaussian_no_media = count_no_media.rolling(window=20, win_type='gaussian', center=True, min_periods=1).mean(std = 3)
 
     ax.plot(gaussian_media, alpha = 1, label = "Tweets with photos or videos",  color = palette[0])
-    ax.plot(gaussian_no_media, alpha = 1, label = "Tweets without photos or videos", color =  palette[1])
+    ax.plot(gaussian_no_media, alpha = 1, label = "Tweets without photos or videos", color =  palette[4])
     
     ax.xaxis.set_major_formatter(date_form)
 
