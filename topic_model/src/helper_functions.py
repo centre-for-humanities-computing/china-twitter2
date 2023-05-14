@@ -1,67 +1,24 @@
 import pandas as pd 
 import pickle as pkl 
-import altair as alt
 import numpy as np 
-
 import matplotlib.pyplot as plt
-import matplotlib.font_manager as font_manager
+import matplotlib.dates as md
 import pyLDAvis.gensim as gm
-
-from pandas.plotting import scatter_matrix
-import seaborn as sns
-sns.set(style="whitegrid")
-import re
 import pyLDAvis
+import re
 from tqdm import tqdm
 
-import matplotlib.dates as md
-
-
 plt.rcParams['font.family'] = 'serif'
-
-# set matplotlib aesthetics
-CB91_Blue = '#2CBDFE'
-CB91_Green = '#47DBCD'
-CB91_Pink = '#F3A0F2'
-CB91_Purple = '#9D2EC5'
-CB91_Violet = '#661D98'
-CB91_Amber = '#F5B14C'
-
-color_list = [CB91_Blue, CB91_Pink, CB91_Green, CB91_Amber,
-              CB91_Purple, CB91_Violet]
-
-plt.rcParams['axes.prop_cycle'] = plt.cycler(color=color_list)
-
-sns.set(rc={
-            'axes.axisbelow': False,
-            'axes.edgecolor': 'lightgrey',
-            'axes.facecolor': 'None',
-            'axes.grid': False,
-            'axes.labelcolor': 'dimgrey',
-            'axes.spines.right': False,
-            'axes.spines.top': False,
-            'figure.facecolor': 'white',
-            'lines.solid_capstyle': 'round',
-            'patch.edgecolor': 'w',
-            'patch.force_edgecolor': True,
-            'text.color': 'dimgrey',
-            'xtick.bottom': False,
-            'xtick.color': 'dimgrey',
-            'xtick.direction': 'out',
-            'xtick.top': False,
-            'ytick.color': 'dimgrey',
-            'ytick.direction': 'out',
-            'ytick.left': False,
-            'ytick.right': False,
-            'savefig.dpi': 800})
-
-#plt.rcParams["savefig.dpi"] = 'figure'
-sns.set_context("notebook", rc={"font.size":12,
-                                "axes.titlesize":16,
-                                "axes.labelsize":16})
+plt.rcParams['figure.titlesize'] = 20
+plt.rcParams['axes.labelsize'] = 14
+plt.rcParams['xtick.labelsize'] = 10
+plt.rcParams['ytick.labelsize'] = 10
+plt.rcParams['legend.fontsize'] = 10
+plt.rcParams['figure.dpi'] = 300
 
 
-#alt.data_transformers.disable_max_rows()
+color_list = ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#800080", "#FFA500", "#00FF00", "#FF0000", "#FFFF00"]
+
 
 ### MAKE FUNCTIONS
 
@@ -100,58 +57,6 @@ def available_users(data):
     """    
     return list(set(data["username"]))
 
-def tweet_count_plot(data, options):
-    """Plots the tweet counts
-
-    Args:
-        data (pd.DataFrame): data for plotting
-        options (list): subset of the users
-
-    Returns:
-        altair plot: Tweet counts over time
-    """    
-    
-    date_freq = pd.DataFrame(data.groupby(['date', 'month', "username"])['created_at'].count()).reset_index()
-
-    date_freq = date_freq.rename(columns = {"date": "Date", "created_at": "Tweet Count", "username": "Username"}, inplace = False)
-    
-    date_freq = date_freq[date_freq["Username"].isin(options)]
-    
-    #date_freq["Date"] = pd.to_datetime(date_freq["Date"])
-    
-    return alt.Chart(date_freq).mark_line().encode(
-        x='Date',
-        y='Tweet Count',
-        color = 'Username',
-        tooltip = ["Date", "Tweet Count", "Username"]
-    ).properties(
-        width=700,
-        height=300
-    )
-
-
-def tweet_count_plot_categories(data):
-    """Plots the aggregated tweet counts across both categories
-
-    Args:
-        data (pd.DataFrame): data for plotting (should contain both categories)
-
-    Returns:
-        altair plot: plots of tweets over time for both categories
-    """    
-    date_freq = pd.DataFrame(data.groupby(['date', 'month', "category"])['created_at'].count()).reset_index()
-
-    date_freq = date_freq.rename(columns = {"date": "Date", "created_at": "Tweet Count"}, inplace = False)
-
-    return alt.Chart(date_freq).mark_line().encode(
-        x='Date',
-        y='Tweet Count',
-        color = 'category',
-        tooltip = ["Date", "Tweet Count", "category"]
-    ).properties(
-        width=700,
-        height=300
-    )
 
 
 # Find the topic number with the highest 
@@ -247,85 +152,6 @@ def topic_names(models, k):
         print(liste)
 
     return liste
-
-def plot_retweets(en_df):
-
-    en_df['month'] = pd.DatetimeIndex(en_df['created_at']).month
-    en_df['date'] = pd.DatetimeIndex(en_df['created_at']).date
-
-    ### OVERALL:
-
-    date_freq = pd.DataFrame(en_df.groupby(['date', 'month', "Category", "retweet_bin"])['created_at'].count()).reset_index()
-
-    date_freq = date_freq.rename(columns = {"date": "Date", "created_at": "Tweets", "retweet_bin": "Retweet"}, inplace = False)
-
-    date_freq["Date"] = pd.to_datetime(date_freq.Date)
-
-    return alt.Chart(date_freq).mark_line().encode(
-            x='Date',
-            y='Tweets',
-            color = 'Retweet',
-            tooltip = ["Date", "Tweets", "Category", "Retweet"]
-        ).properties(
-            width=600,
-            height=300
-        ).facet(
-            row = "Retweet",
-            column="Category"
-        ).resolve_scale(y='independent')
-
-
-def plot_retweets_options(en_df, options):
-    date_freq = pd.DataFrame(en_df.groupby(['date', 'month', "Category", "username", "retweet_bin"])['created_at'].count()).reset_index()
-
-    date_freq = date_freq.rename(columns = {"date": "Date", "created_at": "Tweets", "retweet_bin": "Retweet"}, inplace = False)
-
-    date_freq["Date"] = pd.to_datetime(date_freq.Date)
-
-    ## filter using options
-
-    #diplomats
-
-    date_freq_diplo = date_freq[date_freq["username"].isin(options)]
-
-    return alt.Chart(date_freq_diplo).mark_line().encode(
-            x='Date',
-            y='Tweets',
-            color = 'username',
-            tooltip = ["Date", "Tweets", "Retweet", "username"]
-        ).properties(
-            width=600,
-            height=300
-        ).facet(
-            row = "Retweet",
-        ).resolve_scale(y='independent')
-  
-    
-def plot_bars_retweets(en_df, options):
-    date_freq = pd.DataFrame(en_df.groupby(["category", "username", "retweet_bin"])['created_at'].count()).reset_index()
-
-    date_freq = date_freq.rename(columns = {"created_at": "Tweets", "retweet_bin": "Retweet"}, inplace = False)
-
-    ## filter using options
-
-    #diplomats
-
-    date_freq_diplo = date_freq[date_freq["username"].isin(options)]
-
-    return alt.Chart(date_freq_diplo).mark_bar().encode(
-            alt.X('Retweet', axis = None),
-            y='Tweets',
-            color = 'Retweet',
-            tooltip = ["Tweets", "Retweet", "username"],
-            column = "username"
-        ).properties(
-            width=alt.Step(40),
-            height=300
-        )
-
-
-def get_subset(data, account):
-    return data[data["username"] == account]
 
 def load_models(mediapath, diplomatpath):
     with open(mediapath, "rb") as f:
@@ -425,21 +251,21 @@ def topics_over_time(lda, data):
     '12_2022':'Dec 22'
      })
     
-
-
-    
     df_avg['time'] = pd.to_datetime(df_avg['month_year'], format = '%b %y')
     df_avg['topic_id'] = df_avg['topic_id']+1
     
     return df_avg
 
-def plot_subset(df, range, legend_size, figname, figsize = (7.5, 4), dpi = 100): 
+def plot_subset(df, range, legend_size, figname, figsize = (10, 6), dpi = 300): 
     fig, ax = plt.subplots(figsize = figsize, dpi = dpi)
-    for topic in range: 
+    for i, topic in enumerate(range): 
         df_tmp = df[df["topic_id"] == topic].sort_values(by = 'time')
-        ax.plot(df_tmp['time'], df_tmp['average_weight'], label = f"Topic {topic}")
+        ax.plot(df_tmp['time'], df_tmp['average_weight'], label = f"Topic {topic}", color = color_list[i])
     ax.xaxis.set_major_locator(md.MonthLocator(interval = 2))
-    ax.xaxis.set_major_formatter(md.DateFormatter('%b %y'))
+    ax.xaxis.set_major_formatter(md.DateFormatter("%b-%Y"))
+    for label in ax.get_xticklabels():
+        label.set_ha("right")
+        label.set_rotation(45)
     ax.set_ylim(bottom = 0, top = 0.4)
     ax.legend(frameon = True, loc = 'upper right', fontsize = legend_size)
     
