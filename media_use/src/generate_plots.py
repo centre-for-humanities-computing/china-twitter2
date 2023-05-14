@@ -230,7 +230,7 @@ if __name__ == '__main__':
     count_no_media = df_no_media.groupby("created_at")["tweetID"].count()
 
 
-    fig, ax = plt.subplots(1, 1, figsize=(20, 9))
+    fig, ax = plt.subplots(1, 1, figsize=(15, 9))
     ax.plot(count_media, alpha = 0.3, color = palette[0])
     ax.plot(count_no_media, alpha = 0.3, color = palette[4])
 
