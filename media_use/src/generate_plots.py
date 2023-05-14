@@ -46,7 +46,7 @@ def plot_ax(tweets, ax, measure):
 
     # plot a smoothed version of the data
     gaussian = counts.rolling(window=50, win_type='gaussian', center=True, min_periods=1).mean(std = 10)
-    ax.plot(counts.index, gaussian, alpha=1, linewidth = 1, color = 'darkblue')
+    ax.plot(counts.index, gaussian, alpha=1, linewidth = 1, color = palette[4])
 
     # dates on the x-axis
     ax.xaxis_date()
@@ -143,8 +143,6 @@ def plot_number_of_media_per_day(df, no_rt, figsize=(10, 10), media_type = 'phot
     df = df.groupby('created_at').mean(numeric_only=True).reset_index()
     fig, ax = plt.subplots(1, 1, figsize=figsize)
 
-    
-
     # only retweets
     ax.plot(df['created_at'], df[media_type], alpha = 0.2, color = palette[1])
     gaussian = df[media_type].rolling(window=20, win_type='gaussian', center=True, min_periods=1).mean(std = 3)
@@ -159,8 +157,6 @@ def plot_number_of_media_per_day(df, no_rt, figsize=(10, 10), media_type = 'phot
         ax.plot(no_rt['created_at'], gaussian, color = palette[2], alpha=1, label = 'All original diplomat tweets (all languages)')
     else: 
         ax.plot(no_rt['created_at'], gaussian, color = palette[2], alpha=1, label = f'All original diplomat tweets ({lang})')
-
-
 
     ax.legend()
     ax.xaxis_date()
@@ -235,14 +231,14 @@ if __name__ == '__main__':
 
 
     fig, ax = plt.subplots(1, 1, figsize=(20, 9))
-    ax.plot(count_media, alpha = 0.3, color = "#E69F00")
-    ax.plot(count_no_media, alpha = 0.3, color = "#56B4E9")
+    ax.plot(count_media, alpha = 0.3, color = palette[0])
+    ax.plot(count_no_media, alpha = 0.3, color = palette[1])
 
     gaussian_media = count_media.rolling(window=20, win_type='gaussian', center=True, min_periods=1).mean(std = 3)
     gaussian_no_media = count_no_media.rolling(window=20, win_type='gaussian', center=True, min_periods=1).mean(std = 3)
 
-    ax.plot(gaussian_media, alpha = 1, label = "Tweets with photos or videos",  color = "#E69F00")
-    ax.plot(gaussian_no_media, alpha = 1, label = "Tweets without photos or videos", color = "#56B4E9")
+    ax.plot(gaussian_media, alpha = 1, label = "Tweets with photos or videos",  color = palette[0])
+    ax.plot(gaussian_no_media, alpha = 1, label = "Tweets without photos or videos", color =  palette[1])
     
     ax.xaxis.set_major_formatter(date_form)
 
@@ -251,13 +247,12 @@ if __name__ == '__main__':
     ax.legend()
     plt.savefig(fig_path / "number_of_tweets.png")
 
-
-    fig, ax = plt.subplots(2, 1, figsize=(30, 9), sharey=True)
+    fig, ax = plt.subplots(2, 1, figsize=(15, 9), sharey=True)
 
     # plot the original tweets with images or videos
     for i, row in df_media.iterrows():
         if row['retweet_count'] != 0:
-            ax[0].fill_between([row['created_at'], row['created_at'] + pd.Timedelta(days=1)], [0, 0], [log(row['retweet_count']), log(row['retweet_count'])], color='blue', alpha=0.01)
+            ax[0].fill_between([row['created_at'], row['created_at'] + pd.Timedelta(days=1)], [0, 0], [log(row['retweet_count']), log(row['retweet_count'])], color=palette[4], alpha=0.01)
     ax[0].set_title('Original tweets with images or videos')
     ax[0].set_ylabel('Number of retweets (log)')
     ax[0].xaxis.set_major_formatter(date_form)
@@ -266,7 +261,7 @@ if __name__ == '__main__':
     # plot the original tweets without images or videos
     for i, row in df_no_media.iterrows():
         if row['retweet_count'] != 0:
-            ax[1].fill_between([row['created_at'], row['created_at'] + pd.Timedelta(days=1)], [0, 0], [log(row['retweet_count']), log(row['retweet_count'])], color='blue', alpha=0.01)
+            ax[1].fill_between([row['created_at'], row['created_at'] + pd.Timedelta(days=1)], [0, 0], [log(row['retweet_count']), log(row['retweet_count'])], color=palette[4], alpha=0.01)
     ax[1].set_title('Original tweets without images or videos')
     ax[1].set_ylabel('Number of retweets (log)')
     ax[1].xaxis.set_major_formatter(date_form)
