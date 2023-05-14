@@ -37,11 +37,11 @@ def main():
 
         # plot 8 topics at a time
         for i in range(n_plots):
-            plot_subset(top_over_time, range(8*i, 8*(i+1)), 10, str(fig_path / f"topics_over_time_{period}_{i}.png"))
+            plot_subset(top_over_time, range(8*i+1, 8*(i+1)+1), 10, str(fig_path / f"topics_over_time_{period}_{i}.png"))
 
         # plot the remaining topics
         if n_topics % 8 != 0:
-            plot_subset(top_over_time, range(8*n_plots, n_topics), 10, str(fig_path / f"topics_over_time_{period}_{n_plots}.png"))
+            plot_subset(top_over_time, range(8*n_plots+1, n_topics), 10, str(fig_path / f"topics_over_time_{period}_{n_plots}.png"))
 
 if __name__ == '__main__':
     main()
