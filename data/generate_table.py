@@ -35,6 +35,9 @@ def unique_users(df):
     diplomats = df[df["category"] == "Diplomat"]["username"].unique()
     media = df[df["category"] == "Media"]["username"].unique()
 
+    diplomats.sort()
+    media.sort()
+
     return diplomats, media
 
 
@@ -47,17 +50,18 @@ def get_information_user(user, df):
     original_tweets = user_df[user_df["retweet"] != "retweeted"]
 
     # Original tweets in English
-    original_tweets_en = original_tweets[original_tweets["language"] == "en"]
+    original_tweets_en = original_tweets[original_tweets["lang"] == "en"]
 
     # Retweets
     retweets = user_df[user_df["retweet"] == "retweeted"]
 
     # Retweets in English
-    retweets_en = retweets[retweets["language"] == "en"]
+    retweets_en = retweets[retweets["lang"] == "en"]
 
     # create dataframe with information
     information = pd.DataFrame(
         {
+            "User": [user], 
             "Original tweets": [len(original_tweets)],
             "Original tweets in English": [len(original_tweets_en)],
             "Retweets": [len(retweets)],
@@ -69,13 +73,19 @@ def get_information_user(user, df):
     return information
 
 
+def generate_table(users, df):
+    table = pd.DataFrame()
     
+    for user in users:
+        information = get_information_user(user, df)
+        table = pd.concat([table, information])
+
+    return table
 
 
 def main():
-
     path = Path(__file__)
-    data_path = path / "raw_data.csv"
+    data_path = path.parents[0] / "raw_data.csv"
 
     df = pd.read_csv(data_path)
 
@@ -87,14 +97,13 @@ def main():
     print(f"Number of unique diplomats: {len(diplo_users)}")
     print(f"Number of unique media: {len(media_users)}")
 
-    diplo_table = pd.DataFrame(columns=["Original tweets", "Original tweets in English", "Retweets", "Retweets in English", "Total"])
-    
-    for user in diplo_users:
-        information = get_information_user(user, df)
-        diplo_table = diplo_table.append(information)
+    for user_list, filename in zip([diplo_users, media_users], ["diplo_table.csv", "media_table.csv"]):
+        table = generate_table(user_list, df)
+        save_path = path.parents[0] / filename
+        table.to_csv(save_path, index=False)
 
-    save_path = path / "diplo_table.csv"
-    diplo_table.to_csv(save_path, index=False)
+        # print markdown table
+        print(table.to_markdown(index=False))
 
 
 
