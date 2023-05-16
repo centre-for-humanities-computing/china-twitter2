@@ -14,6 +14,7 @@ import argparse
 from pathlib import Path
 from collections import defaultdict
 
+plt.rcParams['font.family'] = 'serif'
 ''' degree: make smarter '''
 
 def degree_information(G, method, metric):
@@ -157,7 +158,7 @@ def plot_network(G, nodelst, edgelst, color_dct, node_color, nodeedge_color, edg
     '''
 
     # setup 
-    fig, ax = plt.subplots(figsize=(3, 3), dpi=300, facecolor='w', edgecolor='k')
+    fig, ax = plt.subplots(figsize=(6, 6), dpi=300, facecolor='w', edgecolor='k')
     plt.axis("off")
 
     # position & manual tweaking
@@ -179,9 +180,9 @@ def plot_network(G, nodelst, edgelst, color_dct, node_color, nodeedge_color, edg
         G,
         pos,
         labels=labeldict,
-        font_size=3, 
+        font_size=6, 
         bbox=label_options, 
-        font_weight = 'bold')
+        font_family="serif")
 
     # formatting & save
     lines, labels = get_legend(node_size, color_dct)
@@ -195,7 +196,7 @@ def main(n_labels, infile, outfolder):
     seed = 11
     k = 1.8
     edge_mult = 4.5
-    c_node = {'Diplomat': '#6baed6', 'Media': '#fd8d3c'} # blue: https://www.color-hex.com/color-palette/17597 , orange: https://www.color-hex.com/color-palette/17665
+    c_node = {'Diplomat': '#56B4E9', 'Media': '#E69F00'}
     c_nodeedge = {'Diplomat': '#2171b5', 'Media': '#d94701'} #blue: https://www.color-hex.com/color-palette/17597 , orange: https://www.color-hex.com/color-palette/17665
     
     ''' 2. setup/create network '''
