@@ -38,6 +38,8 @@ def unique_users(df):
     diplomats.sort()
     media.sort()
 
+    print(diplomats)
+
     return diplomats, media
 
 

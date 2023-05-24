@@ -96,6 +96,7 @@
 | zhaobaogang2011 |               460 |                          420 |        887 |                   849 |    1347 |
 | zhu_jingyang    |              1969 |                           50 |        257 |                    87 |    2226 |
 | zlj517          |              3459 |                         3357 |      13526 |                 12551 |   16985 |
+
 ### Table 3: Media
 | User            |   Original tweets |   Original tweets in English |   Retweets |   Retweets in English |   Total |
 |:----------------|------------------:|-----------------------------:|-----------:|----------------------:|--------:|
