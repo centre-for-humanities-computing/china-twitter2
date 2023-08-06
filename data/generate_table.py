@@ -172,7 +172,7 @@ def main():
     print(f"Number of unique media: {len(media_users)}")
 
     for user_list, filename in zip([diplo_users, media_users], ["diplo_table.csv", "media_table.csv"]):
-        table = generate_table(user_list, df)
+        table = generate_table(user_list, user_description_dict, df)
         save_path = path.parents[0] / filename
         table.to_csv(save_path, index=False)
 
