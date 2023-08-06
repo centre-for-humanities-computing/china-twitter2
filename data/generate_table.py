@@ -58,11 +58,17 @@ def get_information_user(user, df, user_description_dict):
     # Retweets in English
     retweets_en = retweets[retweets["lang"] == "en"]
 
+    # try to get user description if it exists
+    try:
+        user_description = user_description_dict[user]
+    except KeyError:
+        user_description = " "
+
     # create dataframe with information
     information = pd.DataFrame(
         {
             "User": [user], 
-            "Description": [user_description_dict[user]],
+            "Description": user_description,
             "Original tweets": [len(original_tweets)],
             "Original tweets in English": [len(original_tweets_en)],
             "Retweets": [len(retweets)],
