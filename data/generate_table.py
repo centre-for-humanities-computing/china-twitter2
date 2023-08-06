@@ -38,8 +38,6 @@ def unique_users(df):
     diplomats.sort()
     media.sort()
 
-    print(diplomats)
-
     return diplomats, media
 
 
@@ -94,6 +92,7 @@ def main():
     df = subset_dates(df)
 
     diplo_users, media_users = unique_users(df)
+    print(media_users)
         
     print(f"Number of unique users: {len(diplo_users) + len(media_users)}")
     print(f"Number of unique diplomats: {len(diplo_users)}")
@@ -106,7 +105,6 @@ def main():
 
         # print markdown table
         print(table.to_markdown(index=False))
-
 
 
 
