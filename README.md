@@ -1,7 +1,4 @@
 # china-twitter2
-
-**Note:** Explain early, late and full
-
 ## Tables
 ### Table 1: Dataset
 | Data collection                                                               |                            |
@@ -139,7 +136,7 @@
 ![alt text](media_use/fig/number_of_tweets.png)
 
 ## Topic analysis
-A topic model was created for each of the three time periods. Latent Dirichlet Allocation topic modelling using `gensim` package in Python (See documentation: https://radimrehurek.com/gensim_3.8.3/models/ldamodel.html). 
+A topic model was created using the diplomat tweets. Latent Dirichlet Allocation topic modelling using `gensim` package in Python (See documentation: https://radimrehurek.com/gensim_3.8.3/models/ldamodel.html). 
 LDA is a hierarchical Bayesian model with three levels, in which each item of a collection, in this case tweets, is modeled as a finite mixture over an underlying set of topics. In turn, each topic is modeled as an infinite mixture over an underlying set of topic probabilities. An explicit representation of each tweet is provided by the topic probabilities. 
 
 A total of 180 models were trained for both diplomat and media tweets in each time period with a variation of the following three hyperparameters:
@@ -170,3 +167,4 @@ Emotion classification was conducted using a DistilBERT model finetuned for emot
 
 
 ## Use of photos and videos
+To investigate the dynamics of the diplomats' use of photos and videos (media), measures such as the count and proportion of tweets with media, as well as the number of retweets were plotted over time. See the ```media_use``` directory for plots and scripts.
