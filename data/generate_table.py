@@ -157,8 +157,20 @@ user_description_dict = {
     'xuejianosaka': 'Xue Jian, Consul General of P.R.C  in Osaka (2021-)',
     'zhaobaogang2011': 'Zhao Baogang, African Affairs Department of Chinese Foreign Ministry (2021-2023)',
     'zhu_jingyang': 'Zhu Jingyang, Consul General of P.R.C  in Barcelona (2021-)',
-    'zlj517': 'ZHAO Lijian, Spokesperson & Deputy Director General, Information Department, Ministry of Foreign Affairs, Beijing, P.R.C. (2019-2023). Deputy Director-General of the Department of Boundary and Ocean Affairs of China (2023-).'
-
+    'zlj517': 'ZHAO Lijian, Spokesperson & Deputy Director General, Information Department, Ministry of Foreign Affairs, Beijing, P.R.C. (2019-2023). Deputy Director-General of the Department of Boundary and Ocean Affairs of China (2023-).',
+    "CGTNOfficial": "China Global Television Network (CGTN)",
+    "CNS1952": "China News Service",
+    "ChinaDaily": "China Daily",
+    "Echinanews": "",  # No description provided
+    "HuXijin_GT": "HU Xijin, Global Times Editor-in-chief",
+    "PDChina": "People's Daily",
+    "PDChinese": "People's Daily (Chinese)",
+    "QiushiJournal": "Qiushi Journal",
+    "XHNews": "Xinhua News",
+    "XinWen_Ch": "Voice of China",
+    "chenweihua": "CHEN Weihua, China Daily E.U. Bureau Chief and columnist",
+    "globaltimesnews": "Global Times",
+    "shen_shiwei": "SHEN Shiwei, CGTN News Producer"
 }
 
 
