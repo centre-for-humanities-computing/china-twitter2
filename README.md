@@ -98,21 +98,21 @@
 | zlj517          | ZHAO Lijian, Spokesperson & Deputy Director General, Information Department, Ministry of Foreign Affairs, Beijing, P.R.C. (2019-2023). Deputy Director-General of the Department of Boundary and Ocean Affairs of China (2023-). |              3459 |                         3357 |      13526 |                 12551 |   16985 |
 
 ### Table 3: Media
-| User            |   Original tweets |   Original tweets in English |   Retweets |   Retweets in English |   Total |
-|:----------------|------------------:|-----------------------------:|-----------:|----------------------:|--------:|
-| CGTNOfficial    |            101591 |                        99765 |      16526 |                 16458 |  118117 |
-| CNS1952         |             36706 |                            0 |          5 |                     0 |   36711 |
-| ChinaDaily      |             64846 |                        64410 |       2435 |                  2355 |   67281 |
-| Echinanews      |             31418 |                        31284 |         26 |                    25 |   31444 |
-| HuXijin_GT      |              1528 |                         1524 |         49 |                    49 |    1577 |
-| PDChina         |             32467 |                        32391 |        158 |                   158 |   32625 |
-| PDChinese       |             26142 |                            1 |          0 |                     0 |   26142 |
-| QiushiJournal   |              1131 |                         1095 |          0 |                     0 |    1131 |
-| XHNews          |             75318 |                        74990 |         37 |                    37 |   75355 |
-| XinWen_Ch       |              3324 |                          141 |        316 |                    26 |    3640 |
-| chenweihua      |             17593 |                        16607 |      23045 |                 22296 |   40638 |
-| globaltimesnews |             87304 |                        86805 |        684 |                   619 |   87988 |
-| shen_shiwei     |              9986 |                         9297 |        663 |                   633 |   10649 |
+| User            | Description                                              |   Original tweets |   Original tweets in English |   Retweets |   Retweets in English |   Total |
+|:----------------|:---------------------------------------------------------|------------------:|-----------------------------:|-----------:|----------------------:|--------:|
+| CGTNOfficial    | China Global Television Network (CGTN)                   |            101591 |                        99765 |      16526 |                 16458 |  118117 |
+| CNS1952         | China News Service                                       |             36706 |                            0 |          5 |                     0 |   36711 |
+| ChinaDaily      | China Daily                                              |             64846 |                        64410 |       2435 |                  2355 |   67281 |
+| Echinanews      |                                                          |             31418 |                        31284 |         26 |                    25 |   31444 |
+| HuXijin_GT      | HU Xijin, Global Times Editor-in-chief                   |              1528 |                         1524 |         49 |                    49 |    1577 |
+| PDChina         | People's Daily                                           |             32467 |                        32391 |        158 |                   158 |   32625 |
+| PDChinese       | People's Daily (Chinese)                                 |             26142 |                            1 |          0 |                     0 |   26142 |
+| QiushiJournal   | Qiushi Journal                                           |              1131 |                         1095 |          0 |                     0 |    1131 |
+| XHNews          | Xinhua News                                              |             75318 |                        74990 |         37 |                    37 |   75355 |
+| XinWen_Ch       | Voice of China                                           |              3324 |                          141 |        316 |                    26 |    3640 |
+| chenweihua      | CHEN Weihua, China Daily E.U. Bureau Chief and columnist |             17593 |                        16607 |      23045 |                 22296 |   40638 |
+| globaltimesnews | Global Times                                             |             87304 |                        86805 |        684 |                   619 |   87988 |
+| shen_shiwei     | SHEN Shiwei, CGTN News Producer                          |              9986 |                         9297 |        663 |                   633 |   10649 |
 
 ## Figures
 ### Figure X (full data) open [here](http://htmlpreview.github.io/?https://github.com/centre-for-humanities-computing/china-twitter2/blob/main/topic_model/fig/topic_model_diplomat_alldates.html)
