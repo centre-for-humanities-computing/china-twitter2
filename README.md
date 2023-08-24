@@ -163,7 +163,7 @@ The *nodesize* (size of handle) is determined by various attributes, such as:
 In addition to the network visualizations, we also show the top 10 handles (based on *weighted degree*). 
 
 ## Emotion analysis
-Emotion classification was conducted using a DistilBERT model finetuned for emotion classification. The finetuned model can be found on [HuggingFace](https://huggingface.co/bhadresh-savani/distilbert-base-uncased-emotion). 
+Emotion classification was conducted using a DistilBERT model finetuned for emotion classification. The finetuned model can be found on [HuggingFace](https://huggingface.co/bhadresh-savani/distilbert-base-uncased-emotion). The [NewsFluxus](https://github.com/centre-for-humanities-computing/newsFluxus) package was used to investigate the information dynamics of the emotion distribution over time.
 
 
 ## Use of photos and videos
