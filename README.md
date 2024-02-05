@@ -4,15 +4,15 @@
 | Data collection                                                               |                            |
 | ----------------------------------------------------------------------------- | -------------------------- |
 | Date range                                                                    | Nov 1, 2019 - Apr 30, 2022 |
-| Days collected                                                                | XXX                        |
+| Days collected                                                                | 912                        |
 |                                                                               |                            |
-| Handles collected                                                             | 76                         |
-| Diplomacy                                                                     | 64                         |
-| Media                                                                         | 12                         |
+| Handles collected                                                             | 81                         |
+| Diplomacy                                                                     | 68                         |
+| Media                                                                         | 13                         |
 |                                                                               |                            |
 | Datasets                                                                      | Number of cases            |
-| 1\. Total original tweets and retweets collected (network analysis)           | XXXXXXX                    |
-| 1a. Diplomacy original tweets                                                 | 66987                      |
+| 1\. Total original tweets and retweets collected (network analysis)           | 723439                     |
+| 1a. Diplomacy original tweets                                                 | 109265                     |
 | 1b. Diplomacy retweets                                                        | 80876                      |
 | 1c. Media original tweets                                                     | 489354                     |
 | 1d. Media retweets                                                            | 43944                      |
