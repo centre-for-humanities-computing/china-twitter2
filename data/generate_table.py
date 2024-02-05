@@ -80,6 +80,36 @@ def get_information_user(user, df, user_description_dict):
     return information
 
 
+def get_information_category(df, category="Diplomat"):
+    # Subset to only include the user
+    category_df = df[df["category"] == category]
+
+    # Get the number of original tweets
+    original_tweets = category_df[category_df["retweet"] != "retweeted"]
+
+    # Original tweets in English
+    original_tweets_en = original_tweets[original_tweets["lang"] == "en"]
+
+    # Retweets
+    retweets = category_df[category_df["retweet"] == "retweeted"]
+
+    # Retweets in English
+    retweets_en = retweets[retweets["lang"] == "en"]
+
+    # create dataframe with information
+    information = pd.DataFrame(
+        {
+            "Category": [category], 
+            "Original tweets": [len(original_tweets)],
+            "Original tweets in English": [len(original_tweets_en)],
+            "Retweets": [len(retweets)],
+            "Retweets in English": [len(retweets_en)],
+            "Total": [len(category_df)]
+        }
+    )
+
+    return information
+
 def generate_table(users, user_description_dict, df):
     table = pd.DataFrame()
     
@@ -181,9 +211,10 @@ def main():
     df = pd.read_csv(data_path)
 
     df = subset_dates(df)
+    print(get_information_category(df))
+    print(get_information_category(df, category="Media"))
 
     diplo_users, media_users = unique_users(df)
-    print(media_users)
         
     print(f"Number of unique users: {len(diplo_users) + len(media_users)}")
     print(f"Number of unique diplomats: {len(diplo_users)}")
