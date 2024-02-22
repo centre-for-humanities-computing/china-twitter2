@@ -112,28 +112,46 @@
 | shen_shiwei     | SHEN Shiwei, CGTN News Producer                          |              9986 |                         9297 |        663 |                   633 |   10649 |
 
 ## Figures
-### Figure X (full data) open [here](http://htmlpreview.github.io/?https://github.com/centre-for-humanities-computing/china-twitter2/blob/main/topic_model/fig/topic_model_diplomat_alldates.html)
 
-### Figure Xa
+### Topic model
+Interactive plot of topics. Open [here](http://htmlpreview.github.io/?https://github.com/centre-for-humanities-computing/china-twitter2/blob/main/topic_model/fig/topic_model_diplomat_alldates.html).
+
+**Topics over time**
 ![alt text](topic_model/fig/topics_over_time_all_0.png)
 
-### Figure Xb
 ![alt text](topic_model/fig/topics_over_time_all_1.png)
 
-### Figure Xc
 ![alt text](topic_model/fig/topics_over_time_all_2.png)
 
-### Figure X
+### Sentiment analysis
+Normalised emotion distribution over time for chinese diplomats original tweets
 ![alt text](sentiment/fig/all_emotions_no_rt_normalised.png)
 
-### Figure X
+Information dynamics of the emotion distribution over time for chinese diplomats original tweets. Background color represents shifts in variance.
 ![alt text](sentiment/fig/variance_shifts_no_rt.png)
 
-### Figure X
+### Media use
+Retweets over time for tweets with and without media (photos and videos)
 ![alt text](media_use/fig/retweets.png)
 
-### Figure X
+Number of tweets with and without media (photos and videos) over time.
 ![alt text](media_use/fig/number_of_tweets.png)
+
+### Network analysis
+Network visualisation of Chinese diplomats and media outlets on Twitter in the early period (Nov 2019 - Apr 2020). Node size shows the in-degree of the node. 
+![alt text](networks/fig/network_early/network_focus_in_degree_seed11_k1.8.png)
+
+Visualisation of the early period, where nodesize indicates the out-degree of the node.
+![alt text](networks/fig/network_early/network_focus_out_degree_seed11_k1.8.png)
+
+
+Network visualisation of Chinese diplomats and media outlets on Twitter in the late period (Nov 2021 - Apr 2022). Node size shows the in-degree of the node.
+![alt text](networks/fig/network_late/network_focus_in_degree_seed11_k1.8.png)
+
+Visualisation of the late period, where nodesize indicates the out-degree of the node.
+![alt text](networks/fig/network_late/network_focus_out_degree_seed11_k1.8.png)
+
+
 
 ## Topic analysis
 A topic model was created using the diplomat tweets. Latent Dirichlet Allocation topic modelling using `gensim` package in Python (See documentation: https://radimrehurek.com/gensim_3.8.3/models/ldamodel.html). 
