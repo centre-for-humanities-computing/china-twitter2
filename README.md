@@ -138,12 +138,15 @@ Visualisation of the late period, where nodesize indicates the out-degree of the
 Interactive plot of topics. Open [here](http://htmlpreview.github.io/?https://github.com/centre-for-humanities-computing/china-twitter2/blob/main/topic_model/fig/topic_model_diplomat_alldates.html).
 
 #### Figure 3a
-![alt text](topic_model/fig/topics_over_time_all_0.png)
+![alt text](topic_model/fig/topics_over_time_all_cluster.png)
 
 #### Figure 3b
-![alt text](topic_model/fig/topics_over_time_all_1.png)
+![alt text](topic_model/fig/topics_over_time_all_0.png)
 
 #### Figure 3c
+![alt text](topic_model/fig/topics_over_time_all_1.png)
+
+#### Figure 3d
 ![alt text](topic_model/fig/topics_over_time_all_2.png)
 
 ### Media use
